@@ -23,8 +23,12 @@ import {
 	SelectValue,
 } from "@/app/ui/select";
 import { Textarea } from "@/app/ui/textarea";
+import { cn } from "@/app/utils/cn";
+import { useState } from "react";
+import { Spinner } from "@/app/ui/spinner";
 
 export function SampleForm() {
+	const [form_success, set_form_success] = useState<boolean>(false);
 	const form = useForm<ContactMe>({
 		resolver: zodResolver(contact_me_schema),
 		defaultValues: {
@@ -38,7 +42,14 @@ export function SampleForm() {
 		},
 	});
 
-	const { setValue } = form;
+	const {
+		getValues,
+		setValue,
+		control,
+		handleSubmit,
+		reset,
+		formState: { errors, isSubmitting },
+	} = form;
 
 	const handleCountrySelect = (countryName: string) => {
 		const selectedCountry = COUNTRIES_CODE.find(
@@ -50,17 +61,34 @@ export function SampleForm() {
 		}
 	};
 
-	function onSubmit(values: ContactMe) {
-		console.log(values);
+	const onSubmit = async (formData: ContactMe) => {
+		const res = await fetch("/api/contact", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData),
+		});
+
+		if (res.ok) {
+			set_form_success(true);
+			reset();
+		} else {
+			alert("Something went wrong.");
+		}
+	};
+
+	if (form_success) {
+		return <div>Form Success</div>;
 	}
 
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="space-y-8">
+				onSubmit={handleSubmit(onSubmit)}
+				className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-6 mx-auto">
 				<FormField
-					control={form.control}
+					control={control}
 					name="client_name"
 					render={({ field }) => (
 						<FormItem>
@@ -77,7 +105,7 @@ export function SampleForm() {
 				/>
 
 				<FormField
-					control={form.control}
+					control={control}
 					name="client_email"
 					render={({ field }) => (
 						<FormItem>
@@ -94,7 +122,7 @@ export function SampleForm() {
 				/>
 
 				<FormField
-					control={form.control}
+					control={control}
 					name="country_name"
 					render={({ field }) => (
 						<FormItem>
@@ -104,7 +132,8 @@ export function SampleForm() {
 									field.onChange(value);
 									handleCountrySelect(value);
 								}}>
-								<SelectTrigger>
+								<SelectTrigger
+									className={getValues("country_name") ? "text-black" : ""}>
 									<SelectValue placeholder="Country" />
 								</SelectTrigger>
 								<SelectContent>
@@ -122,9 +151,13 @@ export function SampleForm() {
 					)}
 				/>
 
-				<div className="flex flex-row gap-2 mt-2 items-end relative">
+				<div
+					className={cn(
+						"flex flex-row gap-2 relative items-end",
+						errors.phone_number ? "!mb-12" : ""
+					)}>
 					<FormField
-						control={form.control}
+						control={control}
 						name="country_code"
 						render={({ field }) => (
 							<FormItem>
@@ -132,7 +165,12 @@ export function SampleForm() {
 									<Input
 										{...field}
 										readOnly
-										className="w-16 !mt-6"
+										className={cn(
+											"w-16",
+											errors.phone_number
+												? "items-center !mt-6 !md:mt-[-68px]"
+												: "!mt-[26px] !md:mt-6"
+										)}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -141,11 +179,11 @@ export function SampleForm() {
 					/>
 
 					<FormField
-						control={form.control}
+						control={control}
 						name="phone_number"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="absolute left-0 mb-2">
+								<FormLabel className="absolute left-0 top-0 md:top-1">
 									Phone Number
 								</FormLabel>
 								<FormControl>
@@ -156,7 +194,7 @@ export function SampleForm() {
 											const value = e.target.value;
 											field.onChange(value.replace(/\D/g, ""));
 										}}
-										className="!mt-6"
+										className={cn(errors.phone_number ? "md:!mt-8" : "")}
 									/>
 								</FormControl>
 								<FormMessage className="absolute left-0" />
@@ -166,10 +204,10 @@ export function SampleForm() {
 				</div>
 
 				<FormField
-					control={form.control}
+					control={control}
 					name="subject"
 					render={({ field }) => (
-						<FormItem>
+						<FormItem className="col-span-2">
 							<FormLabel>Subject</FormLabel>
 							<FormControl>
 								<Input
@@ -183,24 +221,31 @@ export function SampleForm() {
 				/>
 
 				<FormField
-					control={form.control}
+					control={control}
 					name="message"
 					render={({ field }) => (
-						<FormItem>
+						<FormItem className="col-span-2">
 							<FormLabel>Message</FormLabel>
 							<FormControl>
 								<Textarea
 									placeholder="Type here...."
 									maxLength={900}
 									{...field}
+									className="h-36"
 								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
-
-				<Button type="submit">Submit</Button>
+				<div className="col-span-2 flex justify-center">
+					<Button
+						type="submit"
+						className="px-24 py-6">
+						{isSubmitting ? <Spinner /> : null}
+						Submit
+					</Button>
+				</div>
 			</form>
 		</Form>
 	);
