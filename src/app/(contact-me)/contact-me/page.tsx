@@ -1,7 +1,6 @@
 import { AppFooter } from "@/app/components/app_footer";
 import { AppHeader } from "@/app/components/app_header";
 import { ContactForm } from "./contact-form";
-import { SampleForm } from "./sample-form";
 
 export default function ContactMe() {
 	return (
@@ -13,8 +12,7 @@ export default function ContactMe() {
 					<br />
 					I'm excited to hear about your ideas and how I can help.
 				</h1>
-				{/* <ContactForm /> */}
-				<SampleForm />
+				<ContactForm />
 			</main>
 			<AppFooter />
 		</div>
