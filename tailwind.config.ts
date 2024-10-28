@@ -36,6 +36,9 @@ const config: Config = {
 					foreground: "hsl(var(--input-foreground))",
 				},
 			},
+			backgroundImage: {
+				"custom-gradient": "linear-gradient(90deg, #D4145A, #FBB03B)",
+			},
 		},
 	},
 	plugins: [],

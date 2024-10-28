@@ -1,0 +1,21 @@
+.hour_glass {
+	transition: transform 0.3s ease;
+	animation: rotate 2s linear infinite; /* Adjust duration as needed */
+}
+
+.contact_btn:hover .hour_glass {
+	transform: rotate(15deg);
+}
+
+.contact_btn:active .hour_glass {
+	transform: rotate(-15deg);
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
