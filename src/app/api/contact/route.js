@@ -28,8 +28,8 @@ export async function POST(req) {
 	const mailOptions = {
 		from: client_email,
 		to: process.env.SMTP_USER,
-		subject: subject,
-		html: `<h1>New Connection through my-portfolio</h1>
+		subject: "New Connection through my-portfolio",
+		html: `<h1>${subject}</h1>
 		 <p><strong>Name:</strong> ${client_name}</p>
 		 <p><strong>Email:</strong> ${client_email}</p>
 		 <p><strong>Country:</strong> ${country_name}</p>

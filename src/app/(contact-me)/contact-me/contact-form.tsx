@@ -108,7 +108,7 @@ export function ContactForm({ set_form_success }: Props) {
 			<Form {...form}>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-6 mx-auto">
+					className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-6 mx-auto w-full max-w-96 md:max-w-2xl">
 					<FormField
 						control={control}
 						name="client_name"
@@ -251,7 +251,7 @@ export function ContactForm({ set_form_success }: Props) {
 							control={control}
 							name="phone_number"
 							render={({ field }) => (
-								<FormItem>
+								<FormItem className="flex-grow">
 									<FormLabel className="absolute left-0 top-0 md:top-1">
 										Phone Number
 									</FormLabel>

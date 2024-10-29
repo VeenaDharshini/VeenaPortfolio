@@ -21,8 +21,8 @@ export function AppFooter() {
 	return (
 		<footer className="bg-[#170b1e] flex flex-col pt-14 pb-20 items-center relative">
 			{show_contact && (
-				<div className="absolute bg-custom-gradient top-0 transform -translate-y-1/2 min-w-[700px] py-7 rounded-3xl flex flex-row justify-center items-center gap-10">
-					<p className="text-white text-xl">
+				<div className="absolute bg-custom-gradient top-0 transform p-5 -translate-y-1/2 min-w-52 md:min-w-[700px] md:py-7 rounded-3xl flex flex-col md:flex-row justify-center items-center gap-2.5 md:gap-10">
+					<p className="text-white text-base md:text-xl">
 						Inspired by ideas, driven by results!
 					</p>
 					<Link

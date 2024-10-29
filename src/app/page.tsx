@@ -17,8 +17,8 @@ export default function Home() {
 				src="/assets/Skills.png"
 				alt="Skills"
 				width={500}
-				height={1000}
-				className="mx-auto"
+				height={100}
+				className="mx-auto max-w-96 md:max-w-[auto]"
 			/>
 		</main>
 	);
