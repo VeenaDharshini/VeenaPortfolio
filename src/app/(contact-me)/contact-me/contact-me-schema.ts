@@ -30,3 +30,11 @@ export const contact_me_schema = z.object({
 });
 
 export type ContactMe = z.infer<typeof contact_me_schema>;
+
+export const country_input_schema = z.object({
+	name: z.string(),
+	code: z.string(),
+	flag_img: z.string(),
+});
+
+export type CountryInput = z.infer<typeof country_input_schema>;
