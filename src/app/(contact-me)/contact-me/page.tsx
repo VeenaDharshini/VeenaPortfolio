@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ContactForm } from "./contact-form";
+import { ContactForm } from "./_components/contact-form";
 import Image from "next/image";
 
 export default function ContactMe() {
 	const [form_success, set_form_success] = useState<boolean>(false);
 	return (
-		<main className="flex flex-col md:gap-8 row-start-2 items-center sm:items-start min-h-[50vh] px-7 mb-24">
+		<main className="flex flex-col md:gap-8 row-start-2 items-center sm:items-start min-h-[50vh] px-7 mb-24 max-w-7xl mx-auto">
 			{form_success ? (
 				<div className="flex flex-col m-auto items-center">
 					<Image

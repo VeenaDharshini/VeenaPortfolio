@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
 	return (
-		<main className="flex flex-col gap-8 row-start-2 items-center sm:items-start mt-16">
+		<main className="flex flex-col gap-8 row-start-2 items-center sm:items-start mt-16 mb-28 max-w-7xl mx-auto">
 			<h1 className="text-purple-950 text-5xl md:text-7xl font-semibold text-center w-full">
 				Hi, I'm Veena
 			</h1>
