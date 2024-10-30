@@ -2,7 +2,9 @@ import Image from "next/image";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { TbUserSearch } from "react-icons/tb";
 import { PiHandshakeFill } from "react-icons/pi";
+import { PiReadCvLogoBold } from "react-icons/pi";
 import Link from "next/link";
+import { ResumeDownload } from "../resume_download";
 
 export function AppHeader() {
 	return (
@@ -38,6 +40,11 @@ export function AppHeader() {
 					<PiHandshakeFill size={20} />
 					Say Hello
 				</Link>
+
+				<ResumeDownload className="flex items-center gap-1 flex-col text-base md:text-xl font-semibold">
+					<PiReadCvLogoBold size={20} />
+					Resume
+				</ResumeDownload>
 			</div>
 		</header>
 	);

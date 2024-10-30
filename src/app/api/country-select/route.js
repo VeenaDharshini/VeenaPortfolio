@@ -12,7 +12,6 @@ export const fetchCountries = async () => {
 				flag_img: country.flags.svg,
 			};
 		});
-		console.log("RESPONSE DATA: ", formatted);
 		return formatted;
 	} catch (error) {
 		throw new Error("Failed to fetch countries");
