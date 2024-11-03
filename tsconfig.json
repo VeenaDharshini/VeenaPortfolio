@@ -28,7 +28,7 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"src/app/api/contact/route.js",
-		"src/app/api/country-select/route.js"
+		"src/app/api/countries/route.js"
 	],
 	"exclude": ["node_modules"]
 }

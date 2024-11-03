@@ -32,7 +32,6 @@ import {
 	CommandItem,
 } from "@/app/ui/command";
 import { RiExpandUpDownLine } from "react-icons/ri";
-import { fetchCountries } from "@/app/api/country-select/route";
 import Image from "next/image";
 import { Skeleton } from "@/app/ui/skeleton";
 
@@ -47,9 +46,13 @@ export function ContactForm({ set_form_success }: Props) {
 	const [error, setError] = useState<boolean>(false);
 
 	useEffect(() => {
-		const getCountries = async () => {
+		const fetchCountries = async () => {
 			try {
-				const data = await fetchCountries();
+				const response = await fetch("/api/countries");
+				if (!response.ok) {
+					throw new Error("Failed to fetch countries");
+				}
+				const data = await response.json();
 				setCountries(data);
 			} catch (err) {
 				setError(true);
@@ -57,7 +60,8 @@ export function ContactForm({ set_form_success }: Props) {
 				setLoading(false);
 			}
 		};
-		getCountries();
+
+		fetchCountries();
 	}, []);
 
 	const form = useForm<ContactMe>({
@@ -146,7 +150,7 @@ export function ContactForm({ set_form_success }: Props) {
 					{loading ? (
 						<div>
 							<FormLabel>Country</FormLabel>
-							<Skeleton className="bg-[#cfb8f8] w-60 h-10 !mt-auto" />
+							<Skeleton className="bg-[#cfb8f8] w-full md:w-72 h-10 !mt-auto" />
 						</div>
 					) : countries && countries.length > 0 ? (
 						<FormField
