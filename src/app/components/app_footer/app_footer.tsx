@@ -28,7 +28,7 @@ export function AppFooter() {
 			</p>
 			<div className="flex flex-row gap-4 my-7">
 				<Link
-					href={`https://www.linkedin.com/in/${process.env.LINKEDIN}`}
+					href={`https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN}`}
 					className={link_style}
 					target="_blank"
 					rel="noopener noreferrer">
@@ -38,7 +38,7 @@ export function AppFooter() {
 					/>
 				</Link>
 				<Link
-					href={`https://github.com/${process.env.GIT_HUB}`}
+					href={`https://github.com/${process.env.NEXT_PUBLIC_GIT_HUB}`}
 					className={link_style}
 					target="_blank"
 					rel="noopener noreferrer">
@@ -48,7 +48,7 @@ export function AppFooter() {
 					/>
 				</Link>
 				<Link
-					href={`mailto:${process.env.SMTP_USER}`}
+					href={`mailto:${process.env.NEXT_PUBLIC_SMTP_USER}`}
 					className={link_style}
 					target="_blank"
 					rel="noopener noreferrer">
@@ -58,7 +58,7 @@ export function AppFooter() {
 					/>
 				</Link>
 				<Link
-					href={`https://www.instagram.com/${process.env.INSTAGRAM}`}
+					href={`https://www.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM}`}
 					className={link_style}
 					target="_blank"
 					rel="noopener noreferrer">

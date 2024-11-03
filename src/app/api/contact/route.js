@@ -14,12 +14,12 @@ export async function POST(req) {
 	} = formData;
 
 	const transporter = nodemailer.createTransport({
-		host: process.env.SMTP_HOST,
-		port: process.env.SMTP_PORT,
+		host: process.env.NEXT_PUBLIC_SMTP_HOST,
+		port: process.env.NEXT_PUBLIC_SMTP_PORT,
 		secure: false,
 		auth: {
-			user: process.env.SMTP_USER,
-			pass: process.env.SMTP_PASS,
+			user: process.env.NEXT_PUBLIC_SMTP_USER,
+			pass: process.env.NEXT_PUBLIC_SMTP_PASS,
 		},
 	});
 
@@ -27,7 +27,7 @@ export async function POST(req) {
 
 	const mailOptions = {
 		from: client_email,
-		to: process.env.SMTP_USER,
+		to: process.env.NEXT_PUBLIC_SMTP_USER,
 		subject: "New Connection through my-portfolio",
 		html: `<h1>${subject}</h1>
 		 <p><strong>Name:</strong> ${client_name}</p>
