@@ -5,7 +5,7 @@ import { TechStackCarousel } from "./_components/tech_stack_carousel";
 export default function Work() {
 	return (
 		<main className="flex flex-col gap-8 row-start-2 items-center sm:items-start mb-28 max-w-7xl mx-auto">
-			<div className="flex flex-col md:flex-row gap-7 items-center md:max-w-[640px] mx-auto">
+			<div className="flex flex-col md:flex-row gap-7 items-center md:max-w-[640px] mx-auto px-7">
 				<Image
 					src="/assets/Veena.png"
 					alt="My Img"
@@ -13,7 +13,7 @@ export default function Work() {
 					height={100}
 					className="mx-auto max-w-96 md:max-w-[640px] rounded-lg"
 				/>
-				<ul className="text-purple-950 font-semibold font-mono">
+				<ul className="text-purple-950 font-semibold font-mono text-justify">
 					<li className="grid grid-flow-col mb-3">
 						<FaPlay className="m-2" />
 						<span>

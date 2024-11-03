@@ -71,6 +71,7 @@ export function AppFooter() {
 			<p className="text-white flex justify-center items-center text-xl">
 				<FaRegCopyright className="mr-3" /> 2024 Veena Dharshini
 			</p>
+			<p className="text-[#cfbad1] text-xs">Handcrafted by me</p>
 		</footer>
 	);
 }

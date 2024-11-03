@@ -8,7 +8,7 @@ import { ResumeDownload } from "../resume_download";
 
 export function AppHeader() {
 	return (
-		<header className="grid grid-cols-[max-content_1fr_max-content] items-center max-w-7xl mx-auto px-11 py-5 w-full">
+		<header className="grid grid-cols-[max-content_1fr_max-content] items-center max-w-7xl mx-auto px-4 md:px-11 py-5 w-full">
 			<Link href="/">
 				<Image
 					src="/assets/MyLogo.png"
